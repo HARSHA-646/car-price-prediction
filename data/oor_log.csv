@@ -1,0 +1,4 @@
+Present_Price,Kms_Driven,Car_Age,Kms_per_Year,Fuel_Type,Seller_Type,Transmission,Owner,prediction,timestamp,flags
+7.89999999999999,44000,8.0,11000.0,Diesel,Individual,Manual,0,6.101977726813441,2025-09-24T12:16:08.904186,"{""Car_Age"": [""low"", 4.0, 8.0]}"
+7.89999999999999,44000,8.0,22000.0,Diesel,Individual,Manual,0,-3.945465450381052,2025-09-24T12:16:52.077722,"{""Car_Age"": [""low"", 2.0, 8.0]}"
+5.0,45000,8.0,9000.0,Petrol,Individual,Manual,0,2.6436437562039377,2025-09-24T15:48:34.596107,"{""Car_Age"": [""low"", 5.0, 8.0]}"

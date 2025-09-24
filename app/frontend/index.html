@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Car Price Predictor — Dashboard</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🚗</div>
+        <div>
+          <h1>Car Price Predictor</h1>
+          <p class="subtitle">End-to-end ML demo — powered by your LightGBM model</p>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="meta-card">RMSE: <strong id="rmse">1.48</strong></div>
+        <div class="meta-card">Model: <strong>LightGBM (monotone)</strong></div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="left">
+        <div class="card form-card">
+          <h2>Input Car Details</h2>
+          <form id="car-form">
+            <div class="grid">
+              <label>Present Price (lakhs)
+                <input id="present_price" type="number" step="0.1" value="5.0" required>
+              </label>
+              <label>Kms Driven
+                <input id="kms_driven" type="number" value="45000" required>
+              </label>
+              <label>Car Age (years)
+                <input id="car_age" type="number" value="5" min="0" required>
+              </label>
+              <label>Fuel Type
+                <select id="fuel_type"><option>Petrol</option><option>Diesel</option><option>CNG</option></select>
+              </label>
+              <label>Seller Type
+                <select id="seller_type"><option>Individual</option><option>Dealer</option></select>
+              </label>
+              <label>Transmission
+                <select id="transmission"><option>Manual</option><option>Automatic</option></select>
+              </label>
+              <label>Owner
+                <select id="owner"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+              </label>
+            </div>
+
+            <div class="actions">
+              <button id="predict-btn" type="submit">Predict Price</button>
+              <button id="sweep-btn" type="button" class="muted">Quick Age Sweep</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card info-cards">
+          <div class="info">
+            <h3>Reliability</h3>
+            <div id="reliability" class="status good">—</div>
+            <div id="flag-box" class="flags"></div>
+          </div>
+
+          <div class="info">
+            <h3>Training Ranges</h3>
+            <ul>
+              <li>Present_Price: <span id="range-price">0.32 — 92.6</span></li>
+              <li>Kms_Driven: <span id="range-kms">500 — 500000</span></li>
+              <li>Car_Age: <span id="range-age">2 — 17</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="card result-card">
+          <h2>Prediction</h2>
+          <div id="prediction-large" class="prediction">—</div>
+          <div id="prediction-note" class="note">Enter details & click Predict</div>
+        </div>
+
+        <div class="card chart-card">
+          <h2>Price vs Car Age (0 → 30)</h2>
+          <canvas id="ageChart" height="200"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Built with ❤️ — Streamlined for demo. Remember to run backend at <code>http://127.0.0.1:8000</code></div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
