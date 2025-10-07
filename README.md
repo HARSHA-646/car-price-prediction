@@ -1,6 +1,12 @@
 "# car-price-prediction" 
 # Car Price Prediction
 
+## set up or create a environment
+python -m venv (virturral env name)
+
+## to activite environment
+ (virtual env name)\Scripts\activate.bat
+
 ## Setup
 pip install -r requirements.txt
 
